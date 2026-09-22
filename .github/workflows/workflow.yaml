@@ -9,7 +9,6 @@ env:
 IMAGE_NAME: raheemdevops/html-cicd
 
 jobs:
-
 build:
 name: Build and Push Docker Image
 runs-on: ubuntu-latest
@@ -48,13 +47,14 @@ steps:
       host: ${{ secrets.EC2_HOST }}
       username: ${{ secrets.EC2_USERNAME }}
       key: ${{ secrets.EC2_SSH_KEY }}
+
       script: |
         set -e
 
         echo "Docker version:"
         docker --version
 
-        echo "Pulling latest image..."
+        echo "Pulling Docker image..."
         docker pull ${{ env.IMAGE_NAME }}:latest
 
         echo "Stopping old container..."
